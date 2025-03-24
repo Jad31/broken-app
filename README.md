@@ -103,13 +103,13 @@ L'application sera accessible sur `http://localhost:4200`
 - Tests et error handling
 - Documentation du code
 
-## 📋 Instructions de Soumission
+📋 Instructions de Soumission
+  - Clone le projet depuis le repo GitHub du challenge
+  - Réalise le challenge directement dans ton propre repo
+  - Colle le lien de ton repo sur AngularOnly une fois terminé
 
-1. Créez une branche pour vos modifications
-2. Commitez vos changements avec des messages clairs
-3. Documentez vos choix techniques
-4. Ajoutez des tests si possible
-5. Soumettez un PR avec vos modifications
+👉 Pas besoin de faire une PR, tu gardes ton espace de travail propre.
+On veut juste voir comment tu codes en conditions réelles.
 
 ## 💡 Conseils
 
