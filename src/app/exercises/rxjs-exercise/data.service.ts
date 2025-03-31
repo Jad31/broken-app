@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { DestroyRef, Injectable, inject, signal } from '@angular/core';
-import { Observable, interval } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
+import { DestroyRef, Injectable, inject, signal } from "@angular/core";
+import { Observable, interval } from "rxjs";
+import { map, shareReplay, tap } from "rxjs/operators";
 
 export interface User {
   id: number;
@@ -10,7 +10,7 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class DataService {
   private destroyRef = inject(DestroyRef);
@@ -19,7 +19,7 @@ export class DataService {
   users = signal<User[]>([]);
 
   constructor(private http: HttpClient) {
-    this.cache$ = this.http.get<User[]>('https://api.example.com/users').pipe(
+    this.cache$ = this.http.get<User[]>("https://api.example.com/users").pipe(
       map((users) => users.sort((a, b) => b.score - a.score)),
       shareReplay({ bufferSize: 1, refCount: true })
     );

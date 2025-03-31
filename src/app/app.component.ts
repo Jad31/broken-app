@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { ModalExerciseComponent } from './exercises/modal-exercise/modal-exercise.component';
-import { PerformanceExerciseComponent } from './exercises/performance-exercise/performance-exercise.component';
-import { RxjsExerciseComponent } from './exercises/rxjs-exercise/rxjs-exercise.component';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { ModalExerciseComponent } from "./exercises/modal-exercise/modal-exercise.component";
+import { PerformanceExerciseComponent } from "./exercises/performance-exercise/performance-exercise.component";
+import { RxjsExerciseComponent } from "./exercises/rxjs-exercise/rxjs-exercise.component";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
   imports: [
     CommonModule,
@@ -21,9 +21,9 @@ import { RxjsExerciseComponent } from './exercises/rxjs-exercise/rxjs-exercise.c
         en Angular. Temps estimé : 45 minutes.
       </p>
 
-      <!-- <app-modal-exercise />
+      <app-modal-exercise />
       <app-rxjs-exercise />
-      <app-performance-exercise /> -->
+      <app-performance-exercise />
     </div>
   `,
   styles: [

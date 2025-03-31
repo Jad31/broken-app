@@ -1,0 +1,26 @@
+<div class="card">
+  <h2>Exercice 1: Modal et Z-index</h2>
+  <p>Corriger les problèmes de z-index du modal et améliorer son animation.</p>
+
+  <button class="btn" (click)="openModal()" aria-label="Ouvrir le modal">
+    Ouvrir le Modal
+  </button>
+
+  @if (showModal) {
+  <div
+    class="modal-container"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    <div @fadeInOut class="overlay" (click)="closeModal()"></div>
+    <div @slideInOut class="modal" tabindex="-1">
+      <h3 id="modalTitle">Contenu du Modal</h3>
+      <p>Ce modal doit apparaître au-dessus de tous les autres éléments.</p>
+      <button class="btn" (click)="closeModal()" aria-label="Fermer le modal">
+        Fermer
+      </button>
+    </div>
+  </div>
+  }
+</div>

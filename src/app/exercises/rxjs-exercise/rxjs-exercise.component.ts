@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DataService } from './data.service';
+import { CommonModule } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { DataService } from "./data.service";
 
 @Component({
-  selector: 'app-rxjs-exercise',
+  selector: "app-rxjs-exercise",
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -14,38 +14,40 @@ import { DataService } from './data.service';
       <div class="users-list">
         <h3>Liste des Utilisateurs</h3>
         @if (users().length) {
-          <ul>
-            @for (user of users(); track user.id) {
-              <li>
-                {{ user.name }} - Score: {{ user.score }}
-                <button class="btn" (click)="updateUserScore(user.id)">
-                  Mettre à jour le score
-                </button>
-              </li>
-            }
-          </ul>
+        <ul>
+          @for (user of users(); track user.id) {
+          <li>
+            {{ user.name }} - Score: {{ user.score }}
+            <button class="btn" (click)="updateUserScore(user.id)">
+              Mettre à jour le score
+            </button>
+          </li>
+          }
+        </ul>
         } @else {
-          <p>Chargement des utilisateurs...</p>
+        <p>Chargement des utilisateurs...</p>
         }
       </div>
     </div>
   `,
-  styles: [`
-    .users-list {
-      margin-top: 20px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-  `]
+  styles: [
+    `
+      .users-list {
+        margin-top: 20px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+    `,
+  ],
 })
 export class RxjsExerciseComponent {
   private dataService = inject(DataService);

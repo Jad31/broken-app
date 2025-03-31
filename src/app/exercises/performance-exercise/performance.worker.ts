@@ -1,11 +1,13 @@
 /// <reference lib="webworker" />
 
-addEventListener('message', ({ data }) => {
+addEventListener("message", ({ data }) => {
   const results = heavyCalculation(data);
   postMessage(results);
 });
 
-function heavyCalculation(data: number[]): Array<{id: number, value: number}> {
+function heavyCalculation(
+  data: number[]
+): Array<{ id: number; value: number }> {
   return data.map((n, id) => {
     let value = n;
     for (let i = 0; i < 1000000; i++) {
