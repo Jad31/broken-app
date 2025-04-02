@@ -1,0 +1,22 @@
+<div class="card">
+  <h2>Exercice 2: Optimisation RxJS</h2>
+  <p>Corriger les fuites mémoire et optimiser la gestion d'état.</p>
+
+  <div class="users-list">
+    <h3>Liste des Utilisateurs</h3>
+    @if (users().length) {
+    <ul>
+      @for (user of users(); track user.id) {
+      <li>
+        {{ user.name }} - Score: {{ user.score }}
+        <button class="btn" (click)="updateUserScore(user.id)">
+          Mettre à jour le score
+        </button>
+      </li>
+      }
+    </ul>
+    } @else {
+    <p>Chargement des utilisateurs...</p>
+    }
+  </div>
+</div>

@@ -5,56 +5,8 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
   selector: "app-performance-exercise",
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="card">
-      <h2>Exercice 3: Performance</h2>
-      <p>
-        Optimiser les calculs intensifs et éviter le blocage du thread
-        principal.
-      </p>
-
-      <div class="controls">
-        <button class="btn" (click)="startHeavyCalculation()">
-          Démarrer le calcul intensif
-        </button>
-      </div>
-
-      <div class="results">
-        @if (calculating) {
-        <div class="loading-spinner"></div>
-        } @if (results.length > 0) {
-        <div class="data-grid">
-          @for (result of results; track result.id) {
-          <div class="grid-item">
-            {{ result.value }}
-          </div>
-          }
-        </div>
-        }
-      </div>
-    </div>
-  `,
-  styles: [
-    `
-      .controls {
-        margin-bottom: 20px;
-      }
-      .data-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-        gap: 10px;
-      }
-      .grid-item {
-        padding: 10px;
-        background: #eee;
-        text-align: center;
-        border-radius: 4px;
-      }
-      .results {
-        margin-top: 20px;
-      }
-    `,
-  ],
+  templateUrl: "./performance-exercise.component.html",
+  styleUrl: "./performance-exercise.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PerformanceExerciseComponent {

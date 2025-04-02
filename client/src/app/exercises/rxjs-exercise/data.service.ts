@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { DestroyRef, Injectable, inject, signal } from "@angular/core";
-import { Observable, interval } from "rxjs";
-import { map, shareReplay, tap } from "rxjs/operators";
+import { Observable, Subject } from "rxjs";
+import { map, shareReplay, takeUntil } from "rxjs/operators";
 
 export interface User {
   id: number;
@@ -14,26 +14,29 @@ export interface User {
 })
 export class DataService {
   private destroyRef = inject(DestroyRef);
+  private destroy$ = new Subject<void>();
+  private apiUrl = "http://localhost:3000/users";
   private cache$: Observable<User[]>;
 
   users = signal<User[]>([]);
 
   constructor(private http: HttpClient) {
-    this.cache$ = this.http.get<User[]>("https://api.example.com/users").pipe(
+    this.destroyRef.onDestroy(() => {
+      this.destroy$.next();
+      this.destroy$.complete();
+    });
+
+    this.cache$ = this.http.get<User[]>(this.apiUrl).pipe(
       map((users) => users.sort((a, b) => b.score - a.score)),
       shareReplay({ bufferSize: 1, refCount: true })
     );
 
-    // Mise à jour automatique toutes les 5 secondes
-    interval(5000)
-      .pipe(
-        tap(() => this.loadUsers())
-        // takeUntil(this.destroyRef.onDestroy)
-      )
-      .subscribe();
-
-    // Chargement initial
-    this.loadUsers().subscribe((users) => this.users.set(users));
+    this.http
+      .get<User[]>(this.apiUrl)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((users) => {
+        this.users.set(users.sort((a, b) => b.score - a.score));
+      });
   }
 
   loadUsers(): Observable<User[]> {
@@ -46,5 +49,10 @@ export class DataService {
         user.id === userId ? { ...user, score: newScore } : user
       )
     );
+
+    this.http
+      .patch<User>(`${this.apiUrl}/${userId}/score`, { score: newScore })
+      .pipe(takeUntil(this.destroy$))
+      .subscribe();
   }
 }

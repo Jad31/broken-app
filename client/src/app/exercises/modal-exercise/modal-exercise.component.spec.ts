@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
-import {
-  NoopAnimationsModule
-} from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { ModalExerciseComponent } from "./modal-exercise.component";
 
 describe("ModalExerciseComponent", () => {
@@ -66,10 +64,10 @@ describe("ModalExerciseComponent", () => {
     // Modal should be removed from DOM immediately
     const modalElement = fixture.debugElement.query(By.css(".modal-container"));
     expect(modalElement).toBeFalsy();
-    
+
     // Test focus restoration timeout
     jest.advanceTimersByTime(100);
-    
+
     // Modal should still be hidden
     expect(component.showModal).toBe(false);
   });
@@ -121,10 +119,10 @@ describe("ModalExerciseComponent", () => {
 
     // Verify that the previously focused element is stored
     expect(component["previouslyFocusedElement"]).toBe(mockButton);
-    
+
     // Test that focus moves to modal button
     jest.advanceTimersByTime(100);
-    
+
     // Close modal
     component.closeModal();
 

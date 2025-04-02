@@ -1,0 +1,26 @@
+<div class="card">
+  <h2>Exercice 3: Performance</h2>
+  <p>
+    Optimiser les calculs intensifs et éviter le blocage du thread principal.
+  </p>
+
+  <div class="controls">
+    <button class="btn" (click)="startHeavyCalculation()">
+      Démarrer le calcul intensif
+    </button>
+  </div>
+
+  <div class="results">
+    @if (calculating) {
+    <div class="loading-spinner"></div>
+    } @if (results.length > 0) {
+    <div class="data-grid">
+      @for (result of results; track result.id) {
+      <div class="grid-item">
+        {{ result.value }}
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>

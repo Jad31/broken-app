@@ -1,36 +1,17 @@
 {
-  "name": "angular-test-app",
+  "name": "angular-test-app-workspace",
   "private": true,
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:modal": "jest modal-exercise.component.spec.ts",
-    "e2e": "npx playwright test",
-    "e2e:modal": "npx playwright test e2e/modal.e2e-spec.ts"
-  },
-  "dependencies": {
-    "@angular/animations": "^19.0.6",
-    "@angular/common": "^19.0.6",
-    "@angular/compiler": "^19.0.6",
-    "@angular/core": "^19.0.6",
-    "@angular/forms": "^19.0.6",
-    "@angular/platform-browser": "^19.0.6",
-    "@angular/router": "^19.0.6",
-    "rxjs": "^7.8.1",
-    "tslib": "^2.5.0",
-    "zone.js": "~0.15.0"
+    "start:client": "cd client && pnpm start",
+    "start:api": "cd api && pnpm start:dev",
+    "start:all": "concurrently \"pnpm run start:client\" \"pnpm run start:api\"",
+    "build:client": "cd client && pnpm build",
+    "build:api": "cd api && pnpm build",
+    "build": "pnpm run build:client && pnpm run build:api",
+    "test:client": "cd client && pnpm test",
+    "test:api": "cd api && pnpm test"
   },
   "devDependencies": {
-    "@angular/build": "^19.0.7",
-    "@angular/cli": "^19.0.7",
-    "@angular/compiler-cli": "^19.0.6",
-    "@playwright/test": "^1.51.1",
-    "@types/jest": "^29.5.14",
-    "jest": "^29.7.0",
-    "jest-preset-angular": "^14.5.3",
-    "typescript": "^5.6.3"
+    "concurrently": "^8.2.2"
   }
 }
